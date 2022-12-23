@@ -1,4 +1,4 @@
-from django.core.cache import caches
+from django.core.cache import cache
 from django.http import JsonResponse
 
 class AuthMiddleware:
@@ -6,8 +6,8 @@ class AuthMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        # ignore login path
-        if request.path == '/auth/login':
+        # ignore auth path
+        if 'api/auth/' in request.path:
             response = self.get_response(request)
             return response
 
@@ -16,6 +16,9 @@ class AuthMiddleware:
             return JsonResponse({"error": "error_not_logged_in"})
         
         # inject user data in request
-        request.user = caches.get(auth_session_token)
+        request.user = cache.get(auth_session_token)
+        if request.user is None:
+            return JsonResponse({"error": "error_not_logged_in"})
+
         response = self.get_response(request)
         return response
