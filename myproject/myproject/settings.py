@@ -78,7 +78,7 @@ CACHES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mysql',
+        'NAME': 'event_db',
         'USER': 'user',
         'PASSWORD': 'password',
         'HOST': '127.0.0.1',
