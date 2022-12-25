@@ -20,9 +20,9 @@ CREATE TABLE IF NOT EXISTS `event_db`.`event_tab` (
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE INDEX `idx_time_category_location` ON `event_db`.`event_tab` (`start_time`, `end_time`, `category`, `location`);
-CREATE INDEX `idx_category` ON `event_db`.`event_tab` (`category`);
-CREATE INDEX `idx_location` ON `event_db`.`event_tab` (`location`);
+CREATE INDEX `idx_time` ON `event_db`.`event_tab` (`start_time`, `end_time`);
+CREATE INDEX `idx_category_location_time` ON `event_db`.`event_tab` (`category`, `loation`, `start_time`, `end_time`);
+CREATE INDEX `idx_location_category_time` ON `event_db`.`event_tab` (`location`, `category`, `start_time`, `end_time`);
 
 CREATE TABLE IF NOT EXISTS `event_db`.`event_comment_tab` (
 	`id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
