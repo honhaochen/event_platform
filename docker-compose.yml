@@ -5,6 +5,8 @@ services:
     restart: always
     ports:
       - '6379:6379'
+    expose:
+      - '6379'
   mysql:
     image: mysql:5.7
     restart: always
@@ -19,6 +21,7 @@ services:
       - '3306'
     volumes:
       - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ./schema_sample_data.sql:/docker-entrypoint-initdb.d/schemad_sample_data.sql # notice the filename difference!
       - database:/var/lib/mysql
 # Names our volume
 volumes:
