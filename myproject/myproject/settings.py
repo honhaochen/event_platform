@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'auth.apps.AuthConfig',
+    'events.apps.EventsConfig',
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.staticfiles',
